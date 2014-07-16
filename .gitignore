@@ -11,3 +11,4 @@ test/__pycache__
 test/*.tmp
 test_support/distribute-*.egg
 
+tests/test_output/*.output.actual

@@ -15,38 +15,58 @@ class IntegrationTest(unittest.TestCase):
 
     maxDiff = None
 
-    def _run_and_compare(self, command, gold_file):
-        gold_file = os.path.join(os.path.dirname(__file__), 'test_output', gold_file)
+    def _run_and_compare(self, command, file_name):
+        gold_file_full_path = \
+            os.path.join(os.path.dirname(__file__), 'test_output', file_name + '.gold')
+        actual_output_full_path = \
+            os.path.join(os.path.dirname(__file__), 'test_output', file_name + '.actual')
+
+        if os.path.exists(actual_output_full_path):
+            os.remove(actual_output_full_path)
 
         # Create an environment that acts as if it is called from TeamCity and add the source root to the
         # path of the process
         env = os.environ.copy()
         env['PYTHONPATH'] = os.path.dirname(os.path.dirname(__file__))
-        env["TEAMCITY_PROJECT_NAME"] = "project_name"
+        env['TEAMCITY_PROJECT_NAME'] = "project_name"
 
         # Start the process and wait for its output
-        proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env)
+        proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, shell=True)
         actual_output = "".join([normalize_output(x.decode()) for x in proc.stdout.readlines()])
         proc.wait()
 
         # Get the expected output
-        with open(gold_file, 'r') as f:
+        with open(gold_file_full_path, 'r') as f:
             expected_output = f.read().replace("\r", "")
 
-        self.assertEqual(expected_output, actual_output, "actual output does not match gold file, called with: %s"
-                                                         % " ".join(command))
+        if (actual_output == expected_output):
+            pass ## the test passed
+        else:
+            msg = "actual output does not match gold file, called with: %s" % " ".join(command)
+            self.write_text_into_file(actual_output, actual_output_full_path)
+            self.fail(msg)
+
+
+    def write_text_into_file(self, actual_output, actual_output_full_path):
+        actual_file = open(actual_output_full_path, 'w')
+        try:
+            actual_file.write(actual_output)
+        finally:
+            actual_file.close()
+
 
     def test_unittest(self):
         self._run_and_compare([sys.executable, get_script_path('test-unittest.py')],
-                              'test-unittest.output.gold')
+                              'test-unittest.output')
 
     def test_pytest(self):
         self._run_and_compare(["py.test", "--teamcity", get_script_path('test-pytest.py')],
-                              'test-pytest.output.gold')
+                              'test-pytest.output')
 
     def test_nosetest(self):
         self._run_and_compare(["nosetests", "-w", get_script_path('test-nose')],
-                              'test-nose.output.gold')
+                              'test-nose.output')
+
 
 
 class MessagesTest(unittest.TestCase):
