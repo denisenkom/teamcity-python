@@ -18,7 +18,7 @@ if you have extracted version or Github checkout
 Usage
 -----
 **unittest** Use the TeamcityTestRunner as your test runner to report messages to TeamCity.
- f you wish to print usual diagnostics without it, you could use something like:
+If you wish to print usual diagnostics without it, you could use something like:
 
     import unittest
     from teamcity import is_running_under_teamcity
