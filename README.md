@@ -56,7 +56,7 @@ nose to be installed. (This is identical to running `python setup.py test`.) It 
 before running these tests. Note that you can run these tests using your favorite test framework, but for reporting to
 TeamCity you probably require this module itself, which is a somewhat circular dependency.
 
-The second method involves running `test.py`. This module requires `virtualenv` to be installed in your current env and
+The second method involves running `tests.py`. This module requires `virtualenv` to be installed in your current env and
 create a new virtualenv for each supported test framework. A new Python process is opened within this env, and this
 process will then in turn run a single unit test. Since we use `pip` to install the required packages in the env, you
 do not need to install py.test and nose in your main env. Additionally, this module offers some basic reporting
