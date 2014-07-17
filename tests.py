@@ -88,7 +88,7 @@ def run_test(test_name):
         unittest.TextTestRunner(verbosity=2).run(testsuite)
 
 
-def run_remaining_tests():
+def run_unit_tests():
     """Run the remaining tests"""
 
     testsuite = unittest.TestLoader().loadTestsFromTestCase(MessagesTest)
@@ -114,10 +114,10 @@ def run_remaining_tests():
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
+        run_unit_tests()
         wrap_test_in_venv('tests.core.IntegrationTest.test_unittest')
         wrap_test_in_venv('tests.core.IntegrationTest.test_pytest')
         wrap_test_in_venv('tests.core.IntegrationTest.test_nosetest')
-        run_remaining_tests()
     elif len(sys.argv) == 2:
         prepare_test(sys.argv[1])
     elif len(sys.argv) == 3:
