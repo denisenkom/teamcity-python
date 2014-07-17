@@ -1,4 +1,4 @@
-============================= test session starts ==============================
+============================= test session starts =============================
 platform SPEC
 plugins: teamcity-messages
 collected 5 items
@@ -16,27 +16,27 @@ test-pytest.py
 
 ##teamcity[testStarted timestamp='TIMESTAMP' name='TestTeamcityMessages.testAssertEqualFails']
 F
-##teamcity[testFailed timestamp='TIMESTAMP' details='self = <test-pytest.TestTeamcityMessages instance at 0x????????>       assert 1 == 2|nE       assert 1 == 2|n|ntest-pytest.py:12: AssertionError' message='(|'test-pytest.py|', 10, |'TestTeamcityMessages.testAssertEqualFails|')' name='TestTeamcityMessages.testAssertEqualFails']
+##teamcity[testFailed timestamp='TIMESTAMP' details='self = <test-pytest.TestTeamcityMessages instance at 0x????????>       assert 1 == 2|nE       assert 1 == 2|n|ntests/test_scripts/test-pytest.py:12: AssertionError' message='(|'tests//test_scripts//test-pytest.py|', 10, |'TestTeamcityMessages.testAssertEqualFails|')' name='TestTeamcityMessages.testAssertEqualFails']
 
 ##teamcity[testFinished timestamp='TIMESTAMP' duration='MS' name='TestTeamcityMessages.testAssertEqualFails']
 
 ##teamcity[testStarted timestamp='TIMESTAMP' name='TestTeamcityMessages.testAssertFalse']
 F
-##teamcity[testFailed timestamp='TIMESTAMP' details='self = <test-pytest.TestTeamcityMessages instance at 0x????????>       assert False|nE       assert False|n|ntest-pytest.py:15: AssertionError' message='(|'test-pytest.py|', 13, |'TestTeamcityMessages.testAssertFalse|')' name='TestTeamcityMessages.testAssertFalse']
+##teamcity[testFailed timestamp='TIMESTAMP' details='self = <test-pytest.TestTeamcityMessages instance at 0x????????>       assert False|nE       assert False|n|ntests/test_scripts/test-pytest.py:15: AssertionError' message='(|'tests//test_scripts//test-pytest.py|', 13, |'TestTeamcityMessages.testAssertFalse|')' name='TestTeamcityMessages.testAssertFalse']
 
 ##teamcity[testFinished timestamp='TIMESTAMP' duration='MS' name='TestTeamcityMessages.testAssertFalse']
 
 ##teamcity[testStarted timestamp='TIMESTAMP' name='TestTeamcityMessages.testException']
 F
-##teamcity[testFailed timestamp='TIMESTAMP' details='self = <test-pytest.TestTeamcityMessages instance at 0x????????>       raise Exception("some exception")|nE       Exception: some exception|n|ntest-pytest.py:18: Exception' message='(|'test-pytest.py|', 16, |'TestTeamcityMessages.testException|')' name='TestTeamcityMessages.testException']
+##teamcity[testFailed timestamp='TIMESTAMP' details='self = <test-pytest.TestTeamcityMessages instance at 0x????????>       raise Exception("some exception")|nE       Exception: some exception|n|ntests/test_scripts/test-pytest.py:18: Exception' message='(|'tests//test_scripts//test-pytest.py|', 16, |'TestTeamcityMessages.testException|')' name='TestTeamcityMessages.testException']
 
 ##teamcity[testFinished timestamp='TIMESTAMP' duration='MS' name='TestTeamcityMessages.testException']
 
 ##teamcity[testSuiteFinished timestamp='TIMESTAMP' name='test-pytest.py']
 
 
-=================================== FAILURES ===================================
-__________________ TestTeamcityMessages.testAssertEqualFails ___________________
+================================== FAILURES ===================================
+__________________ TestTeamcityMessages.testAssertEqualFails __________________
 
 self = <test-pytest.TestTeamcityMessages instance at 0x????????>
 
@@ -44,8 +44,8 @@ self = <test-pytest.TestTeamcityMessages instance at 0x????????>
 >       assert 1 == 2
 E       assert 1 == 2
 
-test-pytest.py:12: AssertionError
-_____________________ TestTeamcityMessages.testAssertFalse _____________________
+tests/test_scripts/test-pytest.py:12: AssertionError
+____________________ TestTeamcityMessages.testAssertFalse _____________________
 
 self = <test-pytest.TestTeamcityMessages instance at 0x????????>
 
@@ -53,8 +53,8 @@ self = <test-pytest.TestTeamcityMessages instance at 0x????????>
 >       assert False
 E       assert False
 
-test-pytest.py:15: AssertionError
-______________________ TestTeamcityMessages.testException ______________________
+tests/test_scripts/test-pytest.py:15: AssertionError
+_____________________ TestTeamcityMessages.testException ______________________
 
 self = <test-pytest.TestTeamcityMessages instance at 0x????????>
 
@@ -62,5 +62,5 @@ self = <test-pytest.TestTeamcityMessages instance at 0x????????>
 >       raise Exception("some exception")
 E       Exception: some exception
 
-test-pytest.py:18: Exception
-====================== 3 failed, 2 passed in X.XX seconds ======================
+tests/test_scripts/test-pytest.py:18: Exception
+===================== 3 failed, 2 passed in X.XX seconds ======================

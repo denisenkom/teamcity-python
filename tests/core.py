@@ -35,6 +35,8 @@ class IntegrationTest(unittest.TestCase):
         actual_output = "".join([normalize_output(x.decode()) for x in proc.stdout.readlines()])
         proc.wait()
 
+        actual_output = actual_output.replace("\\","/")
+
         # Get the expected output
         with open(gold_file_full_path, 'r') as f:
             expected_output = f.read().replace("\r", "")
