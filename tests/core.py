@@ -28,7 +28,7 @@ class IntegrationTest(unittest.TestCase):
         # path of the process
         env = os.environ.copy()
         env['PYTHONPATH'] = os.path.dirname(os.path.dirname(__file__))
-        env['TEAMCITY_PROJECT_NAME'] = "project_name"
+        env['TEAMCITY_VERSION'] = "0.0.0"
 
         # Start the process and wait for its output
         proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, shell=True)

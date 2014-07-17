@@ -38,7 +38,7 @@ under TeamCity and prints usual diagnostics without it.
     platforms=["any"],
     packages=["teamcity"],
     test_suite='tests.core',
-    tests_require=['nose==1.2.1', 'pytest==2.3.4'],
+    #tests_require=['nose', 'pytest'],
     entry_points={
         'nose.plugins': [
             'nose-teamcity = teamcity.nose_report:TeamcityReport'

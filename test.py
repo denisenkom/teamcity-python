@@ -33,7 +33,10 @@ def wrap_test_in_venv(test_name, package=None):
     venv_dir = tempfile.mkdtemp()
     virtualenv.create_environment(venv_dir)
 
-    cmd = [find_script(venv_dir, "python"), sys.argv[0], test_name]
+    python_cmd = find_script(venv_dir, "python")
+    subprocess.call([python_cmd, "setup.py", "install"])
+
+    cmd = [python_cmd, sys.argv[0], test_name]
     if package:
         cmd.append(package)
 
@@ -112,8 +115,8 @@ def run_remaining_tests():
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         wrap_test_in_venv('tests.core.IntegrationTest.test_unittest')
-        wrap_test_in_venv('tests.core.IntegrationTest.test_pytest', 'pytest==2.3.4')
-        wrap_test_in_venv('tests.core.IntegrationTest.test_nosetest', 'nose==1.2.1')
+        wrap_test_in_venv('tests.core.IntegrationTest.test_pytest')
+        wrap_test_in_venv('tests.core.IntegrationTest.test_nosetest')
         run_remaining_tests()
     elif len(sys.argv) == 2:
         prepare_test(sys.argv[1])
