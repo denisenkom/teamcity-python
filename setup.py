@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="ncbi-teamcity-messages",
-    version="1.8",
+    version="1.9",
     author='Leonid Shalupov',
     author_email='teamcity-feedback@jetbrains.com',
     description='Send test results ' +
